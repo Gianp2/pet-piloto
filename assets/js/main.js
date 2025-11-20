@@ -1,9 +1,18 @@
 /*=============== MODAL PARA AMPLIAR FOTO DE PERFIL ===============*/
 const modal = document.getElementById('imgModal');
+const modalImage = document.getElementById('modalImage'); // la imagen dentro del modal
 const openBtn = document.getElementById('openImgModal');
 const closeBtn = document.querySelector('.img-modal-close');
 
+// Función para abrir el modal y cargar la imagen del perfil
 const openModal = () => {
+    // Copiamos la misma imagen que está en el botón del perfil
+    const profileImg = document.querySelector('.profile__perfil img');
+    if (profileImg) {
+        modalImage.src = profileImg.src;
+        modalImage.alt = profileImg.alt || 'Foto ampliada de Nerón';
+    }
+
     modal.classList.add('show');
     document.body.style.overflow = 'hidden';
 };
@@ -11,26 +20,29 @@ const openModal = () => {
 const closeModal = () => {
     modal.classList.remove('show');
     document.body.style.overflow = '';
+    // Opcional: limpiar la src para ahorrar memoria
+    setTimeout(() => { modalImage.src = ''; }, 300);
 };
 
-// Abrir modal
+// Abrir modal al hacer clic en la foto de perfil
 openBtn?.addEventListener('click', openModal);
 
-// Cerrar con X
+// Cerrar con la X
 closeBtn?.addEventListener('click', closeModal);
 
-// Cerrar clic afuera
+// Cerrar clic fuera de la imagen
 modal?.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
+    if (e.target === modal || e.target === modalImage) {
+        closeModal();
+    }
 });
 
-// Cerrar con Escape
+// Cerrar con tecla Escape
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('show')) {
         closeModal();
     }
 });
-
 
 /*=============== FILTERS TABS ===============*/
 const tabs = document.querySelectorAll('[data-target]');
@@ -51,7 +63,6 @@ tabs.forEach(tab => {
         tab.classList.add('filter-tab-active');
     });
 });
-
 
 /*=============== DARK / LIGHT THEME ===============*/
 const themeButton = document.getElementById('theme-button');
@@ -83,7 +94,6 @@ themeButton?.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme());
     localStorage.setItem('selected-icon', getCurrentIcon());
 });
-
 
 /*=============== SCROLL REVEAL (solo texto) ===============*/
 const sr = ScrollReveal({
