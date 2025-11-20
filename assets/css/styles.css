@@ -871,3 +871,29 @@ body.dark-theme .theme-toggle .ri-sun-line {
 .projects__title { font-size: var(--h3-font-size); margin-bottom: .75rem; }
 .projects__button { padding: .5rem; }
 .projects__card:hover .projects__modal { bottom: 0; }
+
+/*================ TEXTO RESPUESTA INMEDIATA ANIMADO ================*/
+.contact-subtitle {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--title-color);
+  margin-top: 0.3rem;
+  display: inline-block;
+  animation: pulseText 2.2s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+@keyframes pulseText {
+  0% { 
+    transform: scale(1);
+    letter-spacing: 0px;
+  }
+  50% { 
+    transform: scale(1.05);
+    letter-spacing: 0.5px;
+  }
+  100% { 
+    transform: scale(1);
+    letter-spacing: 0px;
+  }
+}
