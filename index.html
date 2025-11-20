@@ -7,6 +7,11 @@
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <title>Nerón - Mi Mascota</title>
+
+  <!-- Scroll suave -->
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
 <body>
 
@@ -49,7 +54,7 @@
         </div>
       </div>
 
-      <!-- ALERGIAS + VACUNAS -->
+      <!-- ALERGIAS + VACUNAS LADO A LADO -->
       <div class="health-grid">
         <div class="health-card allergies-card">
           <div class="health-card__header">
@@ -77,7 +82,7 @@
         </div>
       </div>
 
-      <!-- TÍTULO CONTACTO -->
+      <!-- TÍTULO ANTES DE BOTONES -->
       <div class="contact-title-section">
         <h2 class="contact-title">
           <i class="ri-message-3-line"></i>
@@ -86,29 +91,32 @@
         <p class="contact-subtitle">Respuesta inmediata • 24 hs</p>
       </div>
 
-      <!-- BOTONES CONTACTO -->
+      <!-- BOTONES DE CONTACTO -->
       <div class="contact-buttons">
         <a href="https://wa.me/5493471" target="_blank" class="contact-btn whatsapp">
           <i class="ri-whatsapp-line"></i>
           <span>WhatsApp</span>
         </a>
-        <a href="tel:+5493471" class="contact-btn phone">
+        <a href="tel:+5493471347911" class="contact-btn phone">
           <i class="ri-phone-line"></i>
           <span>Llamar</span>
         </a>
-        <a href="https://www.instagram.com//" target="_blank" class="contact-btn instagram">
+        <a href="https://www.instagram.com/" target="_blank" class="contact-btn instagram">
           <i class="ri-instagram-line"></i>
           <span>Instagram</span>
         </a>
-        <a href="#" target="_blank" class="contact-btn location">
+
+        <!-- BOTÓN DE UBICACIÓN CORREGIDO -->
+        <a href="#mapa" class="contact-btn location">
           <i class="ri-map-pin-line"></i>
           <span>Ubicación</span>
         </a>
+
       </div>
     </div>
   </header>
 
-  <!--=============== MODAL FOTO ===============-->
+  <!--=============== MODAL FOTO AMPLIADA ===============-->
   <div id="imgModal" class="img-modal">
     <span class="img-modal-close">×</span>
     <img class="img-modal-content" src="assets/img/perfil.png" alt="Nerón">
@@ -122,7 +130,6 @@
       </h2>
 
       <div class="projects__content grid filters__active" data-content id="projects">
-
         <article class="projects__card">
           <img src="assets/img/galeria1.jpg" alt="Nerón" class="projects__img">
         </article>
@@ -138,22 +145,23 @@
         <article class="projects__card">
           <img src="assets/img/galeria3.jpg" alt="Nerón" class="projects__img">
         </article>
-
       </div>
     </section>
   </main>
 
-  <!--=============== FOOTER CON NUEVO MAPA ===============-->
+  <!--=============== FOOTER CON MAPA ===============-->
   <footer class="footer container">
     <h3>Ubicación</h3>
-    <div style="width:100%; max-width:600px; height:300px; margin:1.5rem auto; border-radius:1rem; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.15);">
-      <iframe 
+
+    <!-- CONTENEDOR CON ID PARA QUE EL BOTÓN SALTE AQUÍ -->
+    <div id="mapa" style="width:100%; max-width:600px; height:300px; margin:1.5rem auto; border-radius:1rem; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+      <iframe
         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26864.179135171686!2d-61.5239543!3d-32.6854501!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c9ef85e947f7df%3A0xca367a6a0135d3bc!2sLas%20Parejas%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1763665422133!5m2!1ses-419!2sar"
-        width="100%" height="100%" style="border:0;" 
-        allowfullscreen="" loading="lazy"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade">
       </iframe>
     </div>
+
     <span class="footer__copy">© 2025 Todos los derechos reservados</span>
   </footer>
 
