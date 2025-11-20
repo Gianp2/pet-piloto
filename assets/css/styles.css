@@ -54,11 +54,12 @@ body {
 h1, h2, h3 {
   color: var(--title-color);
   font-weight: 600;
+  margin: 0;
 }
 
-ul { list-style: none; }
+ul { list-style: none; padding: 0; margin: 0; }
 a { text-decoration: none; }
-img { max-width: 100%; height: auto; }
+img { max-width: 100%; height: auto; display: block; }
 
 /*=============== LAYOUT ===============*/
 .container {
@@ -184,8 +185,15 @@ img { max-width: 100%; height: auto; }
   min-width: 80px;
 }
 
-.profile__info-number { font-size: var(--normal-font-size); margin-bottom: .25rem; }
-.profile__info-description { font-size: var(--smaller-font-size); font-weight: 500; }
+.profile__info-number { 
+  font-size: var(--normal-font-size); 
+  margin-bottom: .25rem; 
+}
+
+.profile__info-description { 
+  font-size: var(--smaller-font-size); 
+  font-weight: 500; 
+}
 
 .profile__buttons,
 .profile__buttons-small {
@@ -222,7 +230,9 @@ img { max-width: 100%; height: auto; }
   color: var(--text-color);
 }
 
-.button__gray:hover { background-color: var(--text-color-light); }
+.button__gray:hover { 
+  background-color: var(--text-color-light); 
+}
 
 /*=============== FILTERS TABS ===============*/
 .filters__content {
@@ -256,22 +266,58 @@ img { max-width: 100%; height: auto; }
 .filters [data-content] { display: none; }
 .filters__active[data-content] { display: grid; }
 
-/*=============== PROJECTS & SKILLS (sin cambios) ===============*/
-.projects__card {
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden;
+/*=============== PROJECTS ===============*/
+.projects__content {
+  display: grid;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  grid-template-columns: 1fr;
 }
 
-.projects__card img {
+@media (min-width: 576px) {
+  .projects__content {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 968px;
+  }
+}
+
+@media (min-width: 992px) {
+  .projects__content {
+    gap: 2.5rem;
+    padding: 2.5rem 1rem;
+  }
+}
+
+.projects__card {
+  position: relative;
+  margin: 0 auto;
+  max-width: 100%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 12px 32px hsla(var(--hue), 70%, 40%, 0.15);
+  transition: all 0.4s ease;
+}
+
+.projects__card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px hsla(var(--hue), 70%, 40%, 0.25);
+}
+
+.projects__img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  transition: transform 0.4s ease;
+}
+
+.projects__card:hover .projects__img {
+  transform: scale(1.05);
 }
 
 .projects__modal {
   position: absolute;
-  inset: 0 0 auto;
+  inset: 0;
   bottom: -100%;
   background: linear-gradient(180deg,
     hsla(var(--hue), 24%, 40%, .3) 0%,
@@ -286,11 +332,19 @@ img { max-width: 100%; height: auto; }
 .projects__title { color: #fff; }
 
 .projects__subtitle { font-size: var(--smaller-font-size); }
-.projects__title { font-size: var(--h3-font-size); margin-bottom: .75rem; }
+.projects__title { 
+  font-size: var(--h3-font-size); 
+  margin-bottom: .75rem; 
+}
+
 .projects__button { padding: .5rem; }
 .projects__card:hover .projects__modal { bottom: 0; }
 
-.skills__content { row-gap: 3.5rem; }
+/*=============== SKILLS ===============*/
+.skills__content { 
+  row-gap: 3.5rem; 
+}
+
 .skills__title {
   font-size: var(--h3-font-size);
   text-align: center;
@@ -325,9 +379,11 @@ img { max-width: 100%; height: auto; }
   line-height: 18px;
 }
 
-.skills__level { font-size: var(--small-font-size); }
+.skills__level { 
+  font-size: var(--small-font-size); 
+}
 
-/*=============== NUEVA SECCIÓN: ALERGIAS + VACUNAS LADO A LADO ===============*/
+/*=============== HEALTH: ALERGIAS + VACUNAS ===============*/
 .health-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -401,40 +457,10 @@ img { max-width: 100%; height: auto; }
   font-size: 1.18rem;
   font-weight: 600;
   color: #1a1a1a;
-  margin: 0;
   letter-spacing: 0.4px;
 }
 
-/* Chips Alergias */
-.allergies__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center;
-  margin-top: 0.4rem;
-}
-
-.allergy-chip {
-  background: linear-gradient(135deg, #ff5252, #d32f2f);
-  color: white;
-  padding: 0.65rem 1.15rem;
-  border-radius: 50px;
-  font-size: 0.86rem;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  box-shadow: 0 5px 16px rgba(255, 82, 82, 0.38);
-  transition: all 0.35s ease;
-}
-
-.allergy-chip:hover {
-  transform: translateY(-5px) scale(1.07);
-  box-shadow: 0 12px 28px rgba(255, 82, 82, 0.5);
-}
-
-/* Chips Vacunas */
+.allergies__chips,
 .vaccines__chips {
   display: flex;
   flex-wrap: wrap;
@@ -443,9 +469,8 @@ img { max-width: 100%; height: auto; }
   margin-top: 0.4rem;
 }
 
+.allergy-chip,
 .vaccine-chip {
-  background: linear-gradient(135deg, #4caf50, #388e3c);
-  color: white;
   padding: 0.65rem 1.15rem;
   border-radius: 50px;
   font-size: 0.86rem;
@@ -453,9 +478,25 @@ img { max-width: 100%; height: auto; }
   letter-spacing: 0.3px;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  box-shadow: 0 5px 16px rgba(76, 175, 80, 0.38);
+  gap: 0.55rem;
+  color: white;
   transition: all 0.35s ease;
+}
+
+.allergy-chip {
+  background: linear-gradient(135deg, #ff5252, #d32f2f);
+  box-shadow: 0 5px 16px rgba(255, 82, 82, 0.38);
+}
+
+.allergy-chip:hover {
+  transform: translateY(-5px) scale(1.07);
+  box-shadow: 0 12px 28px rgba(255, 82, 82, 0.5);
+}
+
+.vaccine-chip {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+  box-shadow: 0 5px 16px rgba(76, 175, 80, 0.38);
+  gap: 0.5rem;
 }
 
 .vaccine-chip::after {
@@ -471,58 +512,7 @@ img { max-width: 100%; height: auto; }
   background: linear-gradient(135deg, #66bb6a, #43a047);
 }
 
-/*=============== MODO OSCURO - MEJORADO ===============*/
-body.dark-theme .health-card {
-  background: rgba(30, 30, 40, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-}
-
-body.dark-theme .health-card__title {
-  color: #ffffff;
-}
-
-body.dark-theme .health-card__header {
-  border-bottom-color: rgba(255,255,255,0.12);
-}
-
-body.dark-theme .allergy-chip,
-body.dark-theme .vaccine-chip {
-  opacity: 0.98;
-}
-
-/*=============== RESTO SIN CAMBIOS (footer, scroll, etc.) ===============*/
-.accordion-content li { margin-bottom: .4rem; }
-
-.footer {
-  width: 100%;
-  max-width: 968px;
-  margin: 3rem auto 2rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.footer__copy {
-  display: block;
-  margin: 2.5rem 0 2rem;
-  font-size: var(--small-font-size);
-  color: var(--text-color-light);
-}
-
-.change-theme {
-  position: absolute;
-  top: 1.5rem;
-  right: 1rem;
-  font-size: 1.25rem;
-  color: var(--title-color);
-  cursor: pointer;
-  transition: color .3s;
-}
-
-.change-theme:hover { color: var(--first-color); }
-
+/*=============== MODO OSCURO ===============*/
 body.dark-theme {
   --title-color: hsl(var(--hue), 12%, 95%);
   --text-color: hsl(var(--hue), 12%, 75%);
@@ -530,89 +520,24 @@ body.dark-theme {
   --container-color: hsl(var(--hue), 24%, 12%);
 }
 
+body.dark-theme .health-card {
+  background: rgba(30, 30, 40, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-theme .health-card__title { color: #ffffff; }
+body.dark-theme .health-card__header { border-bottom-color: rgba(255,255,255,0.12); }
+body.dark-theme .allergy-chip,
+body.dark-theme .vaccine-chip { opacity: 0.98; }
+
 body.dark-theme::-webkit-scrollbar { background-color: hsl(var(--hue), 8%, 16%); }
 body.dark-theme::-webkit-scrollbar-thumb { background-color: hsl(var(--hue), 8%, 24%); }
-body.dark-theme::-webkit-scrollbar-thumb:hover { background-color: hsl(var(--hue), 8%, 32%); }
-
-.img-modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  inset: 0;
-  padding-top: 60px;
-  background-color: rgba(0,0,0,.8);
-  overflow: auto;
+body.dark-theme::-webkit-scrollbar-thumb:hover { background-color: hsl(var(--hue), 8%, 32%);
 }
 
-.img-modal-content {
-  margin: auto;
-  display: block;
-  max-width: 80%;
-  max-height: 80%;
-  border-radius: 1rem;
-}
-
-.img-modal-close {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color .3s;
-}
-
-.img-modal-close:hover { color: #bbb; }
-
-/*=============== BREAKPOINTS (sin cambios) ===============*/
-@media screen and (max-width: 320px) {
-  .container { margin: 0 .5rem; }
-  .profile__info { column-gap: 1rem; max-width: 280px; }
-  .profile__buttons { row-gap: .8rem; }
-  .skills__box { column-gap: 1rem; }
-  .profile__perfil { width: 120px; height: 120px; }
-}
-
-@media screen and (max-width: 480px) {
-  .allergy-chip,
-  .vaccine-chip {
-    font-size: 0.82rem;
-    padding: 0.55rem 0.95rem;
-  }
-  .health-card {
-    padding: 1.5rem 1.3rem;
-  }
-}
-
-@media screen and (min-width: 576px) {
-  .projects__content { grid-template-columns: 332px; justify-content: center; }
-  .filters__content { width: 332px; margin: 3rem auto; }
-  .profile__info, .profile__buttons, .profile__buttons-small { max-width: 400px; }
-}
-
-@media screen and (min-width: 776px) {
-  .projects__content,
-  .skills__content { grid-template-columns: repeat(2, 332px); }
-  .skills__content { justify-content: center; column-gap: 3rem; }
-}
-
-@media screen and (min-width: 992px) {
-  .change-theme { top: 2.5rem; right: 2.5rem; }
-  .profile { padding-top: 4rem; }
-  .profile__perfil { width: 180px; height: 180px; }
-  .profile__profession { margin-bottom: 1.5rem; }
-  .profile__info { column-gap: 3rem; max-width: 600px; }
-  .profile__buttons { column-gap: 2rem; max-width: 600px; }
-  .footer__copy { margin: 4.5rem 0 2.5rem; }
-}
-
-/*=============== BOTONES DE CONTACTO - SIN BRILLO ===============*/
-.contact-title-section {
-  text-align: center;
-  margin: 2rem 0 1rem;
-}
-
+/*=============== CONTACTO ===============*/
+.contact-title-section { text-align: center; margin: 2rem 0 1rem; }
 .contact-title {
   font-size: 1.6rem;
   font-weight: 600;
@@ -621,9 +546,18 @@ body.dark-theme::-webkit-scrollbar-thumb:hover { background-color: hsl(var(--hue
 }
 
 .contact-subtitle {
-  font-size: 0.95rem;
-  color: var(--text-color);
-  margin: 0;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--title-color);
+  margin-top: 0.3rem;
+  display: inline-block;
+  animation: pulseText 2.2s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+@keyframes pulseText {
+  0%, 100% { transform: scale(1); letter-spacing: 0px; }
+  50% { transform: scale(1.05); letter-spacing: 0.5px; }
 }
 
 .contact-buttons {
@@ -659,41 +593,18 @@ body.dark-theme::-webkit-scrollbar-thumb:hover { background-color: hsl(var(--hue
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
 }
 
-/* QUITAMOS TODO EL EFECTO DE BRILLO Y MOVIMIENTO */
-.contact-btn::before { display: none; }
-
 .contact-btn:hover {
   opacity: 0.9;
-  transform: none;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
 }
 
-.contact-btn i {
-  font-size: 1.7rem;
-}
+.contact-btn i { font-size: 1.7rem; }
 
-/* Colores sin cambios */
-.whatsapp   { background-color: #075E54; color: #ffffff; } /* Verde oscuro, formal */
-.phone      { background-color: #0D47A1; color: #ffffff; } /* Azul profundo, serio */
-.instagram  { background-color: #6A1B9A; color: #ffffff; } /* Morado elegante */
-.location   { background-color: #C0392B; color: #ffffff; } /* Rojo oscuro, profesional */
+.whatsapp   { background-color: #075E54; }
+.phone      { background-color: #0D47A1; }
+.instagram  { background-color: #6A1B9A; }
+.location   { background-color: #C0392B; }
 
-.contact-buttons button {
-  border: none;
-  border-radius: 8px;
-  padding: 0.8rem 1.5rem;
-  font-weight: 500;
-  font-family: 'Poppins', sans-serif;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.contact-buttons button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-/*=============== BOTÓN MODO OSCURO/CLARO - FIJO Y ELEGANTE 2025 ===============*/
+/*=============== TOGGLE MODO OSCURO FIJO ===============*/
 .theme-toggle {
   position: fixed;
   bottom: 25px;
@@ -709,19 +620,15 @@ body.dark-theme::-webkit-scrollbar-thumb:hover { background-color: hsl(var(--hue
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 
-    0 8px 25px rgba(0, 0, 0, 0.15),
-    0 4px 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   animation: float 6s ease-in-out infinite;
 }
 
 .theme-toggle:hover {
   transform: translateY(-4px) scale(1.08);
-  box-shadow: 
-    0 15px 35px rgba(0, 0, 0, 0.2),
-    0 8px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2), 0 8px 20px rgba(0,0,0,0.12);
   background: rgba(255, 255, 255, 0.3);
 }
 
@@ -732,168 +639,108 @@ body.dark-theme::-webkit-scrollbar-thumb:hover { background-color: hsl(var(--hue
   position: absolute;
 }
 
-/* Icono luna (modo claro) */
-.theme-toggle .ri-moon-line {
-  opacity: 1;
-  transform: rotate(0deg) scale(1);
-}
+.theme-toggle .ri-moon-line { opacity: 1; transform: rotate(0deg) scale(1); }
+.theme-toggle .ri-sun-line   { opacity: 0; transform: rotate(90deg) scale(0.3); }
 
-/* Icono sol (modo oscuro) */
-.theme-toggle .ri-sun-line {
-  opacity: 0;
-  transform: rotate(90deg) scale(0.3);
-}
-
-/* Cuando está en modo oscuro */
 body.dark-theme .theme-toggle {
   background: rgba(30, 30, 40, 0.85);
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 
-    0 8px 25px rgba(0, 0, 0, 0.5),
-    0 4px 10px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255,255,255,0.15);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.3);
 }
 
-body.dark-theme .theme-toggle i {
-  color: #fff;
-}
+body.dark-theme .theme-toggle i { color: #fff; }
+body.dark-theme .theme-toggle .ri-moon-line { opacity: 0; transform: rotate(-90deg) scale(0.3); }
+body.dark-theme .theme-toggle .ri-sun-line   { opacity: 1; transform: rotate(0deg) scale(1); }
 
-body.dark-theme .theme-toggle .ri-moon-line {
-  opacity: 0;
-  transform: rotate(-90deg) scale(0.3);
-}
-
-body.dark-theme .theme-toggle .ri-sun-line {
-  opacity: 1;
-  transform: rotate(0deg) scale(1);
-}
-
-/* Animación flotante sutil */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
 }
 
-/* En pantallas pequeñas (móvil) */
-@media (max-width: 480px) {
-  .theme-toggle {
-    width: 52px;
-    height: 52px;
-    bottom: 20px;
-    right: 15px;
-  }
-  .theme-toggle i {
-    font-size: 1.5rem;
-  }
-}
-
-
-/* Responsive móvil */
-@media (max-width: 480px) {
-  .contact-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  .contact-btn {
-    width: 90%;
-    max-width: 300px;
-  }
-}
-
-/*=============== GALERÍA - 2 EN 2 (RESPONSIVE) ===============*/
-.projects__content {
-  display: grid;
-  gap: 2rem;
-  padding: 2rem 1rem;
-  max-width: 600px;
-  margin: 0 auto;
-  /* Móvil: 1 columna */
-  grid-template-columns: 1fr;
-}
-
-/* Desde tablets: 2 columnas */
-@media (min-width: 576px) {
-  .projects__content {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 968px;
-  }
-}
-
-/* Pantallas grandes: más espacio */
-@media (min-width: 992px) {
-  .projects__content {
-    gap: 2.5rem;
-    padding: 2.5rem 1rem;
-  }
-}
-
-.projects__card {
-  margin: 0 auto;
-  max-width: 100%;
-  border-radius: 1.5rem;
-  overflow: hidden;
-  box-shadow: 0 12px 32px hsla(var(--hue), 70%, 40%, 0.15);
-  transition: all 0.4s ease;
-}
-
-.projects__card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px hsla(var(--hue), 70%, 40%, 0.25);
-}
-
-.projects__img {
+/*=============== FOOTER & MODAL IMAGEN ===============*/
+.footer {
   width: 100%;
-  height: auto;
+  max-width: 968px;
+  margin: 3rem auto 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer__copy {
   display: block;
-  transition: transform 0.4s ease;
+  margin: 2.5rem 0 2rem;
+  font-size: var(--small-font-size);
+  color: var(--text-color-light);
 }
 
-.projects__card:hover .projects__img {
-  transform: scale(1.05);
+.img-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  padding-top: 60px;
+  background-color: rgba(0,0,0,.8);
+  overflow: auto;
 }
 
-.projects__modal {
+.img-modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 1rem;
+}
+
+.img-modal-close {
   position: absolute;
-  inset: 0 0 auto;
-  bottom: -100%;
-  background: linear-gradient(180deg,
-    hsla(var(--hue), 24%, 40%, .3) 0%,
-    hsla(var(--hue), 24%, 4%, 1) 95%);
-  display: grid;
-  align-items: flex-end;
-  padding: 1.5rem 1.25rem;
-  transition: bottom .3s;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color .3s;
 }
 
-.projects__subtitle,
-.projects__title { color: #fff; }
+.img-modal-close:hover { color: #bbb; }
 
-.projects__subtitle { font-size: var(--smaller-font-size); }
-.projects__title { font-size: var(--h3-font-size); margin-bottom: .75rem; }
-.projects__button { padding: .5rem; }
-.projects__card:hover .projects__modal { bottom: 0; }
-
-/*================ TEXTO RESPUESTA INMEDIATA ANIMADO ================*/
-.contact-subtitle {
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: var(--title-color);
-  margin-top: 0.3rem;
-  display: inline-block;
-  animation: pulseText 2.2s ease-in-out infinite;
-  opacity: 0.9;
+/*=============== BREAKPOINTS ===============*/
+@media screen and (max-width: 320px) {
+  .container { margin: 0 .5rem; }
+  .profile__info { column-gap: 1rem; max-width: 280px; }
+  .profile__buttons { row-gap: .8rem; }
+  .skills__box { column-gap: 1rem; }
+  .profile__perfil { width: 120px; height: 120px; }
 }
 
-@keyframes pulseText {
-  0% { 
-    transform: scale(1);
-    letter-spacing: 0px;
+@media screen and (max-width: 480px) {
+  .allergy-chip,
+  .vaccine-chip {
+    font-size: 0.82rem;
+    padding: 0.55rem 0.95rem;
   }
-  50% { 
-    transform: scale(1.05);
-    letter-spacing: 0.5px;
-  }
-  100% { 
-    transform: scale(1);
-    letter-spacing: 0px;
-  }
+  .health-card { padding: 1.5rem 1.3rem; }
+  .theme-toggle { width: 52px; height: 52px; bottom: 20px; right: 15px; }
+  .theme-toggle i { font-size: 1.5rem; }
+}
+
+@media screen and (min-width: 576px) {
+  .profile__info,
+  .profile__buttons,
+  .profile__buttons-small { max-width: 400px; }
+}
+
+@media screen and (min-width: 776px) {
+  .skills__content { justify-content: center; column-gap: 3rem; }
+}
+
+@media screen and (min-width: 992px) {
+  .profile { padding-top: 4rem; }
+  .profile__perfil { width: 180px; height: 180px; }
+  .profile__profession { margin-bottom: 1.5rem; }
+  .profile__info { column-gap: 3rem; max-width: 600px; }
+  .profile__buttons { column-gap: 2rem; max-width: 600px; }
+  .footer__copy { margin: 4.5rem 0 2.5rem; }
 }
