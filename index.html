@@ -2,32 +2,29 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-
-  <!-- Mejora SEO + accesibilidad -->
-  <meta name="description" content="Perfil de Nerón, perro Husky Siberiano. Información de contacto del dueño, vacunas, alergias, galería y ubicación.">
-
+  <meta name="description" content="Perfil de Nerón, perro Husky Siberiano. Información de contacto, vacunas, alergias, galería y ubicación.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 
   <!-- RemixIcons -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/styles.css">
 
-  <title>Nerón - Mi Mascota</title>
+  <title>Nerón - Perfil Mascota</title>
 
-  <!-- Scroll suave -->
   <style>
     html { scroll-behavior: smooth; }
   </style>
 </head>
+
 <body>
 
-  <!--=============== BOTÓN MODO OSCURO/CLARO FIJO ===============-->
+  <!--=============== BOTÓN MODO OSCURO/CLARO ===============-->
   <button class="theme-toggle" id="theme-button" aria-label="Cambiar entre modo claro y oscuro">
     <i class="ri-moon-line" aria-hidden="true"></i>
     <i class="ri-sun-line" aria-hidden="true"></i>
@@ -36,11 +33,16 @@
   <!--=============== ENCABEZADO PERFIL ===============-->
   <header class="profile container">
     <div class="profile__container">
-      <div class="profile__data">
 
+      <div class="profile__data">
         <div class="profile__border">
           <button class="profile__perfil" id="openImgModal" aria-label="Ampliar foto de perfil">
-            <img src="assets/img/galeria1.jpg" alt="Foto de Nerón, Husky Siberiano">
+            <img
+              src="assets/img/galeria1.jpg"
+              alt="Foto de Nerón, Husky Siberiano"
+              width="260"
+              height="260"
+            >
             <div class="profile__zoom-icon">
               <i class="ri-search-eye-line"></i>
             </div>
@@ -48,7 +50,7 @@
         </div>
 
         <h1 class="profile__name">Nerón</h1>
-        <p class="profile__profession">Husky siberiano macho</p>
+        <p class="profile__profession">Husky siberiano • Macho</p>
       </div>
 
       <!-- INFO RÁPIDA -->
@@ -73,7 +75,7 @@
         <section class="health-card allergies-card">
           <div class="health-card__header">
             <i class="ri-alarm-warning-line"></i>
-            <h2 class="health-card__title">Alergias Conocidas</h2>
+            <h2 class="health-card__title">Alergias</h2>
           </div>
           <div class="allergies__chips">
             <span class="allergy-chip"><i class="ri-forbid-line"></i> Polvo</span>
@@ -100,7 +102,7 @@
       <!-- CONTACTO -->
       <div class="contact-title-section">
         <h2 class="contact-title">
-          <i class="ri-message-3-line"></i> Contacta al dueño
+          <i class="ri-message-3-line"></i> Contactar al dueño
         </h2>
         <p class="contact-subtitle">Respuesta inmediata • 24 hs</p>
       </div>
@@ -129,10 +131,10 @@
     </div>
   </header>
 
-  <!--=============== MODAL FOTO AMPLIADA ===============-->
+  <!--=============== MODAL FOTO ===============-->
   <div id="imgModal" class="img-modal" role="dialog" aria-modal="true" aria-label="Foto ampliada de Nerón">
     <button class="img-modal-close" aria-label="Cerrar imagen ampliada">×</button>
-    <img class="img-modal-content" src="assets/img/perfil.png" alt="Foto ampliada de Nerón">
+    <img class="img-modal-content" src="assets/img/perfil.png" alt="Foto ampliada de Nerón" width="600" height="600">
   </div>
 
   <!--=============== GALERÍA ===============-->
@@ -143,30 +145,35 @@
       </h2>
 
       <div class="projects__content grid filters__active" id="projects">
+
         <article class="projects__card">
-          <img src="assets/img/galeria1.jpg" alt="Nerón sentado" class="projects__img" loading="lazy">
+          <img src="assets/img/galeria1.jpg" width="500" height="500" alt="Nerón sentado" class="projects__img" loading="lazy">
         </article>
 
         <article class="projects__card">
-          <img src="assets/img/perfil.png" alt="Primer plano de Nerón" class="projects__img" loading="lazy">
+          <img src="assets/img/perfil.png" width="500" height="500" alt="Primer plano de Nerón" class="projects__img" loading="lazy">
         </article>
 
         <article class="projects__card">
-          <img src="assets/img/galeria2.jpg" alt="Nerón jugando" class="projects__img" loading="lazy">
+          <img src="assets/img/galeria2.jpg" width="500" height="500" alt="Nerón jugando" class="projects__img" loading="lazy">
         </article>
 
         <article class="projects__card">
-          <img src="assets/img/galeria3.jpg" alt="Nerón al aire libre" class="projects__img" loading="lazy">
+          <img src="assets/img/galeria3.jpg" width="500" height="500" alt="Nerón al aire libre" class="projects__img" loading="lazy">
         </article>
+
       </div>
     </section>
   </main>
 
-  <!--=============== FOOTER CON MAPA ===============-->
+  <!--=============== FOOTER / MAPA ===============-->
   <footer class="footer container">
     <h2>Ubicación</h2>
 
-    <div id="mapa" style="width:100%; max-width:600px; height:300px; margin:1.5rem auto; border-radius:1rem; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+    <div
+      id="mapa"
+      style="width:100%; max-width:600px; height:300px; margin:1.5rem auto; border-radius:1rem; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.15);"
+    >
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26864.179135171686!2d-61.5239543!3d-32.6854501!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c9ef85e947f7df%3A0xca367a6a0135d3bc!2sLas%20Parejas%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1763665422133!5m2!1ses-419!2sar"
         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
