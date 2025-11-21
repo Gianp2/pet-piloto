@@ -39,12 +39,6 @@ Este proyecto es una versión piloto del sistema, donde se diseñan perfiles per
 
 ---
 
-## 🖼️ **Vista previa del sistema**
-
-![Vista previa](/info/img2.png)
-
----
-
 ## 📂 **Tecnologías utilizadas**
 
 - **HTML5**  
