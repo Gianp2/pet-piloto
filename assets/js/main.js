@@ -120,3 +120,19 @@ document.querySelectorAll('img').forEach(img => {
     img.style.opacity = '1';
     img.style.transform = 'none';
 });
+
+// ===================== ALERTA MANUAL =====================
+window.addEventListener("DOMContentLoaded", () => {
+    const alertBox = document.getElementById("exampleAlert");
+    const closeBtn = document.getElementById("alertClose");
+
+    // Mostrar alerta al cargar la página
+    setTimeout(() => {
+        alertBox.classList.add("show");
+    }, 400);
+
+    // Cerrar alerta al tocar la X
+    closeBtn.addEventListener("click", () => {
+        alertBox.classList.remove("show");
+    });
+});
