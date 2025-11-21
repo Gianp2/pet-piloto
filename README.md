@@ -40,39 +40,6 @@ Este proyecto es una versión piloto del sistema, donde se diseñan perfiles per
 
 ---
 
-## 🐶 **Información necesaria para crear el perfil**
-
-### 🐾 Datos de la mascota
-- Nombre  
-- Foto de perfil  
-- Fotos extra para galería (opcional)  
-- Especie (perro, gato, etc.)  
-- Raza (si aplica)  
-- Edad  
-- Alergias  
-- Vacunas  
-- Características o notas especiales  
-
-### 📞 Datos del dueño
-- Número de teléfono  
-- Instagram (opcional)  
-- Ubicación o dirección aproximada  
-
----
-
-## 🛠️ **Actualización del perfil**
-
-Las modificaciones futuras **son gratuitas**:
-
-- Cambiar fotos  
-- Agregar o actualizar vacunas  
-- Actualizar teléfono  
-- Modificar información médica  
-- Editar datos generales  
-
-Solo hay que avisar por WhatsApp y se actualiza el perfil sin costo.
-
----
 
 ## 🖼️ Vista previa del sistema
 
@@ -87,9 +54,3 @@ Solo hay que avisar por WhatsApp y se actualiza el perfil sin costo.
 - **JavaScript**
 - **Hosting en Vercel**
 - Diseño responsive
-
----
-
-## 📬 **Contacto**
-
-📱 *“Cuando tengas toda la información, mandámela por acá y preparo el perfil. ¡Gracias por elegir Pet Profile QR!”*
