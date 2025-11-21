@@ -1,7 +1,5 @@
 # 🐾 **Pet Profile QR – Identificación Digital para Mascotas**
 
-![Pet Profile QR](/info/img1.png)
-
 Pet Profile QR es un sistema moderno de identificación para mascotas mediante un **código QR** que enlaza a un **perfil web** con toda la información necesaria para que cualquiera pueda ayudarte a recuperar a tu mascota en caso de extravío.
 
 Este proyecto es una versión piloto del sistema, donde se diseñan perfiles personalizados para cada mascota, incluyendo fotos, información médica, datos del dueño y un enlace QR listo para imprimir o colocar en un llavero/placa.
