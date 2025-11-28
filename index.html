@@ -5,17 +5,17 @@
   <meta name="description" content="Perfil de Nerón, perro Husky Siberiano. Información de contacto, vacunas, alergias, galería y ubicación.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
 
-  <!-- Preload imagen principal (LCP) -->
-  <link rel="preload" as="image" href="assets/img/galeria1.webp">
+  <!-- PRELOAD de la imagen principal (LCP) -->
+  <link rel="preload" as="image" href="/assets/img/galeria1.webp" fetchpriority="high">
 
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
 
   <title>Nerón - Perfil Mascota</title>
 </head>
@@ -25,12 +25,12 @@
   <!-- BOTONES FLOTANTES -->
   <div class="floating-buttons-right">
     <button class="theme-toggle" id="theme-button" aria-label="Cambiar entre modo claro y oscuro">
-      <i class="ri-moon-line" aria-hidden="true"></i>
-      <i class="ri-sun-line" aria-hidden="true"></i>
+      <i class="ri-moon-line"></i>
+      <i class="ri-sun-line"></i>
     </button>
 
-    <a href="pages/info.html" class="info-button info-button--text" aria-label="Ver información completa de Nerón">
-      <i class="ri-information-line" aria-hidden="true"></i>
+    <a href="/pages/info.html" class="info-button info-button--text" aria-label="Ver información completa de Nerón">
+      <i class="ri-information-line"></i>
       <span>Más info.</span>
     </a>
   </div>
@@ -43,11 +43,12 @@
         <div class="profile__border">
           <button class="profile__perfil" id="openImgModal" aria-label="Ampliar foto de perfil">
             <img
-              src="assets/img/galeria1.webp"
+              src="/assets/img/galeria1.webp"
               alt="Foto de Nerón, Husky Siberiano"
               width="260"
               height="260"
               fetchpriority="high"
+              decoding="async"
             >
             <div class="profile__zoom-icon">
               <i class="ri-search-eye-line"></i>
@@ -59,7 +60,7 @@
         <p class="profile__profession">Husky siberiano • Macho</p>
       </div>
 
-      <div class="profile__info grid" aria-label="Información rápida de Nerón">
+      <div class="profile__info grid">
         <div class="profile__info-group">
           <h3 class="profile__info-number">2 años</h3>
           <p class="profile__info-description">Edad</p>
@@ -121,8 +122,8 @@
         <p class="contact-subtitle">Respuesta inmediata • 24 hs</p>
       </div>
 
-      <nav class="contact-buttons" aria-label="Opciones de contacto">
-        <a href="https://wa.me/5493471" target="_blank" class="contact-btn whatsapp" rel="noopener noreferrer">
+      <nav class="contact-buttons">
+        <a href="https://wa.me/5493471" target="_blank" class="contact-btn whatsapp" rel="noopener">
           <span>WhatsApp</span>
         </a>
 
@@ -130,7 +131,7 @@
           <span>Llamar</span>
         </a>
 
-        <a href="https://www.instagram.com/" target="_blank" class="contact-btn instagram" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/" target="_blank" class="contact-btn instagram" rel="noopener">
           <span>Instagram</span>
         </a>
 
@@ -142,8 +143,8 @@
   </header>
 
   <!-- MODAL IMAGEN -->
-  <div id="imgModal" class="img-modal" role="dialog" aria-modal="true" aria-label="Foto ampliada">
-    <button class="img-modal-close" aria-label="Cerrar imagen ampliada">×</button>
+  <div id="imgModal" class="img-modal" role="dialog" aria-modal="true">
+    <button class="img-modal-close">×</button>
     <img id="modalImage" class="img-modal-content" src="" alt="Foto ampliada" loading="lazy" decoding="async">
   </div>
 
@@ -155,18 +156,23 @@
       </h2>
 
       <div class="projects__content grid filters__active" id="projects">
+
         <article class="projects__card">
-          <img src="assets/img/galeria1.webp" width="500" height="500" alt="Nerón sentado" class="projects__img" loading="lazy" decoding="async">
+          <img src="/assets/img/galeria1.webp" width="500" height="500" alt="Nerón sentado" class="projects__img" loading="lazy">
         </article>
+
         <article class="projects__card">
-          <img src="assets/img/perfil.webp" width="500" height="500" alt="Primer plano de Nerón" class="projects__img" loading="lazy" decoding="async">
+          <img src="/assets/img/perfil.webp" width="500" height="500" alt="Primer plano de Nerón" class="projects__img" loading="lazy">
         </article>
+
         <article class="projects__card">
-          <img src="assets/img/galeria2.webp" width="500" height="500" alt="Nerón jugando" class="projects__img" loading="lazy" decoding="async">
+          <img src="/assets/img/galeria2.webp" width="500" height="500" alt="Nerón jugando" class="projects__img" loading="lazy">
         </article>
+
         <article class="projects__card">
-          <img src="assets/img/galeria3.webp" width="500" height="500" alt="Nerón al aire libre" class="projects__img" loading="lazy" decoding="async">
+          <img src="/assets/img/galeria3.webp" width="500" height="500" alt="Nerón al aire libre" class="projects__img" loading="lazy">
         </article>
+
       </div>
     </section>
   </main>
@@ -177,7 +183,6 @@
   <footer class="footer container">
     <h2>Ubicación</h2>
 
-    <!-- Map Placeholder (lazy load) -->
     <div id="mapa" style="inline-size:100%; max-inline-size:600px; block-size:300px; margin:1.5rem auto; border-radius:1rem; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.15);">
     </div>
 
@@ -190,21 +195,28 @@
     <p>
       Este es un perfil de ejemplo.<br>
       Para adquirir el tuyo haz click aquí:
-      <a href="https://wa.me/5493471417071" class="alert-whatsapp" target="_blank" rel="noopener noreferrer">
+      <a href="https://wa.me/5493471417071" class="alert-whatsapp" target="_blank" rel="noopener">
         <strong>3471417071</strong>
       </a>.
     </p>
   </div>
 
-  <!-- SCROLLREVEAL y JS con defer -->
-  <script src="https://unpkg.com/scrollreveal" defer></script>
-  <script src="assets/js/main.js" defer></script>
+  <!-- SCROLLREVEAL con carga diferida -->
+  <script>
+    document.addEventListener("scroll", () => {
+      import("https://unpkg.com/scrollreveal").then(() => {
+        ScrollReveal().reveal(".projects__card", { distance: "20px", duration: 600, easing: "ease-out" });
+      });
+    }, { once: true });
+  </script>
 
-  <!-- LAZY LOAD del mapa -->
+  <!-- JS principal -->
+  <script src="/assets/js/main.js" defer></script>
+
+  <!-- Lazy load del mapa -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const mapa = document.getElementById("mapa");
-
       const observer = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
           mapa.innerHTML = `
@@ -212,12 +224,11 @@
               title="Ubicación de Nerón"
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26864.179135171686!2d-61.5239543!3d-32.6854501!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c9ef85e947f7df%3A0xca367a6a0135d3bc!2sLas%20Parejas%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1763665422133"
               width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
+            ></iframe>
           `;
           observer.disconnect();
         }
       });
-
       observer.observe(mapa);
     });
   </script>
