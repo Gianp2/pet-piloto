@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Perfil de Nerón, perro Husky Siberiano. Información de contacto, vacunas, alergias, galería y ubicación.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <title>Nerón - Perfil Mascota</title>
+</head>
+
+<body>
+
+  <!-- BOTONES FLOTANTES ABAJO A LA DERECHA -->
+  <div class="floating-buttons-right">
+    <button class="theme-toggle" id="theme-button" aria-label="Cambiar entre modo claro y oscuro">
+      <i class="ri-moon-line" aria-hidden="true"></i>
+      <i class="ri-sun-line" aria-hidden="true"></i>
+    </button>
+
+    <!-- BOTÓN DE INFORMACIÓN CON TEXTO -->
+    <a href="pages/info.html" class="info-button info-button--text" aria-label="Ver información completa de Nerón">
+      <i class="ri-information-line" aria-hidden="true"></i>
+      <span>Más info.</span>
+    </a>
+  </div>
+
+  <!-- ENCABEZADO PERFIL -->
+  <header class="profile container">
+    <div class="profile__container">
+
+      <div class="profile__data">
+        <div class="profile__border">
+          <button class="profile__perfil" id="openImgModal" aria-label="Ampliar foto de perfil">
+            <img
+              src="assets/img/galeria1.jpg"
+              alt="Foto de Nerón, Husky Siberiano"
+              width="260"
+              height="260"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="high"
+            >
+            <div class="profile__zoom-icon">
+              <i class="ri-search-eye-line"></i>
+            </div>
+          </button>
+        </div>
+
+        <h1 class="profile__name">Nerón</h1>
+        <p class="profile__profession">Husky siberiano • Macho</p>
+      </div>
+
+      <div class="profile__info grid" aria-label="Información rápida de Nerón">
+        <div class="profile__info-group">
+          <h3 class="profile__info-number">2 años</h3>
+          <p class="profile__info-description">Edad</p>
+        </div>
+        <div class="profile__info-group">
+          <h3 class="profile__info-number">Sí</h3>
+          <p class="profile__info-description">Alergias</p>
+        </div>
+        <div class="profile__info-group">
+          <h3 class="profile__info-number">0</h3>
+          <p class="profile__info-description">Enfermedades</p>
+        </div>
+      </div>
+
+      <section class="health-card description-card">
+        <div class="health-card__header">
+          <i class="ri-file-text-line"></i>
+          <h2 class="health-card__title">Descripción</h2>
+        </div>
+
+        <p class="description__text">
+          Nerón es un perro muy sociable, activo y extremadamente cariñoso. Le encanta jugar,
+          pasear al aire libre y es amigable con personas y otros animales. No se asusta fácilmente
+          y responde rápido a su nombre.
+        </p>
+      </section>
+
+      <div class="health-grid">
+
+        <section class="health-card allergies-card">
+          <div class="health-card__header">
+            <i class="ri-alarm-warning-line"></i>
+            <h2 class="health-card__title">Alergias</h2>
+          </div>
+          <div class="allergies__chips">
+            <span class="allergy-chip">Polvo</span>
+            <span class="allergy-chip">Perfumes</span>
+            <span class="allergy-chip">Shampoo común</span>
+          </div>
+        </section>
+
+        <section class="health-card vaccines-card">
+          <div class="health-card__header">
+            <i class="ri-shield-check-line"></i>
+            <h2 class="health-card__title">Vacunas al Día</h2>
+          </div>
+          <div class="vaccines__chips">
+            <span class="vaccine-chip">Moquillo</span>
+            <span class="vaccine-chip">Parvovirus</span>
+            <span class="vaccine-chip">Rabia</span>
+            <span class="vaccine-chip">Leptospirosis</span>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="contact-title-section">
+        <h2 class="contact-title">
+          Contactar al dueño
+        </h2>
+        <p class="contact-subtitle">Respuesta inmediata • 24 hs</p>
+      </div>
+
+      <nav class="contact-buttons" aria-label="Opciones de contacto">
+        <a href="https://wa.me/5493471" target="_blank" class="contact-btn whatsapp" rel="noopener noreferrer">
+          <span>WhatsApp</span>
+        </a>
+
+        <a href="tel:+5493471" class="contact-btn phone">
+          <span>Llamar</span>
+        </a>
+
+        <a href="https://www.instagram.com/" target="_blank" class="contact-btn instagram" rel="noopener noreferrer">
+          <span>Instagram</span>
+        </a>
+
+        <a href="#mapa" class="contact-btn location">
+          <span>Ubicación</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="imgModal" class="img-modal" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+    <button class="img-modal-close" aria-label="Cerrar imagen ampliada">×</button>
+    <img id="modalImage" class="img-modal-content" src="" alt="Foto ampliada" loading="lazy" decoding="async">
+  </div>
+
+  <main class="main">
+    <section class="filters container">
+      <h2 style="text-align:center; margin: 3rem 0 1.5rem; font-size: 1.8rem;">
+        Galería de Nerón
+      </h2>
+
+      <div class="projects__content grid filters__active" id="projects">
+        <article class="projects__card">
+          <img src="assets/img/galeria1.jpg" width="500" height="500" alt="Nerón sentado" class="projects__img" loading="lazy" decoding="async">
+        </article>
+        <article class="projects__card">
+          <img src="assets/img/perfil.png" width="500" height="500" alt="Primer plano de Nerón" class="projects__img" loading="lazy" decoding="async">
+        </article>
+        <article class="projects__card">
+          <img src="assets/img/galeria2.jpg" width="500" height="500" alt="Nerón jugando" class="projects__img" loading="lazy" decoding="async">
+        </article>
+        <article class="projects__card">
+          <img src="assets/img/galeria3.jpg" width="500" height="500" alt="Nerón al aire libre" class="projects__img" loading="lazy" decoding="async">
+        </article>
+      </div>
+    </section>
+  </main>
+  <br>
+
+  <footer class="footer container">
+    <h2>Ubicación</h2>
+
+    <div id="mapa" style="inline-size:100%; max-inline-size:600px; block-size:300px; margin:1.5rem auto; border-radius:1rem; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+      <iframe
+        title="Ubicación de Nerón"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26864.179135171686!2d-61.5239543!3d-32.6854501!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c9ef85e947f7df%3A0xca367a6a0135d3bc!2sLas%20Parejas%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1763665422133"
+        width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <span class="footer__copy">© 2025 Todos los derechos reservados</span>
+  </footer>
+
+  <div id="exampleAlert" class="alert-card glass">
+    <span class="alert-close" id="alertClose">×</span>
+    <p>
+      Este es un perfil de ejemplo.<br>
+      Para adquirir el tuyo haz click aquí:
+      <a href="https://wa.me/5493471417071" class="alert-whatsapp" target="_blank" rel="noopener noreferrer">
+        <strong>3471417071</strong>
+      </a>.
+    </p>
+  </div>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
