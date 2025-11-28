@@ -7,8 +7,8 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
 
-  <!-- PRELOAD de la imagen principal (LCP) -->
-  <link rel="preload" as="image" href="/assets/img/galeria1.webp" fetchpriority="high">
+  <!-- PRELOAD DE LA IMAGEN LCP (la del perfil) -->
+  <link rel="preload" as="image" href="/assets/img/perfil.webp">
 
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -25,12 +25,12 @@
   <!-- BOTONES FLOTANTES -->
   <div class="floating-buttons-right">
     <button class="theme-toggle" id="theme-button" aria-label="Cambiar entre modo claro y oscuro">
-      <i class="ri-moon-line"></i>
-      <i class="ri-sun-line"></i>
+      <i class="ri-moon-line" aria-hidden="true"></i>
+      <i class="ri-sun-line" aria-hidden="true"></i>
     </button>
 
     <a href="/pages/info.html" class="info-button info-button--text" aria-label="Ver información completa de Nerón">
-      <i class="ri-information-line"></i>
+      <i class="ri-information-line" aria-hidden="true"></i>
       <span>Más info.</span>
     </a>
   </div>
@@ -43,7 +43,7 @@
         <div class="profile__border">
           <button class="profile__perfil" id="openImgModal" aria-label="Ampliar foto de perfil">
             <img
-              src="/assets/img/galeria1.webp"
+              src="/assets/img/perfil.webp"
               alt="Foto de Nerón, Husky Siberiano"
               width="260"
               height="260"
@@ -60,7 +60,7 @@
         <p class="profile__profession">Husky siberiano • Macho</p>
       </div>
 
-      <div class="profile__info grid">
+      <div class="profile__info grid" aria-label="Información rápida de Nerón">
         <div class="profile__info-group">
           <h3 class="profile__info-number">2 años</h3>
           <p class="profile__info-description">Edad</p>
@@ -122,8 +122,8 @@
         <p class="contact-subtitle">Respuesta inmediata • 24 hs</p>
       </div>
 
-      <nav class="contact-buttons">
-        <a href="https://wa.me/5493471" target="_blank" class="contact-btn whatsapp" rel="noopener">
+      <nav class="contact-buttons" aria-label="Opciones de contacto">
+        <a href="https://wa.me/5493471" target="_blank" class="contact-btn whatsapp" rel="noopener noreferrer">
           <span>WhatsApp</span>
         </a>
 
@@ -131,7 +131,7 @@
           <span>Llamar</span>
         </a>
 
-        <a href="https://www.instagram.com/" target="_blank" class="contact-btn instagram" rel="noopener">
+        <a href="https://www.instagram.com/" target="_blank" class="contact-btn instagram" rel="noopener noreferrer">
           <span>Instagram</span>
         </a>
 
@@ -143,8 +143,8 @@
   </header>
 
   <!-- MODAL IMAGEN -->
-  <div id="imgModal" class="img-modal" role="dialog" aria-modal="true">
-    <button class="img-modal-close">×</button>
+  <div id="imgModal" class="img-modal" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+    <button class="img-modal-close" aria-label="Cerrar imagen ampliada">×</button>
     <img id="modalImage" class="img-modal-content" src="" alt="Foto ampliada" loading="lazy" decoding="async">
   </div>
 
@@ -156,23 +156,18 @@
       </h2>
 
       <div class="projects__content grid filters__active" id="projects">
-
         <article class="projects__card">
-          <img src="/assets/img/galeria1.webp" width="500" height="500" alt="Nerón sentado" class="projects__img" loading="lazy">
+          <img src="/assets/img/galeria1.webp" width="500" height="500" alt="Nerón sentado" class="projects__img" loading="lazy" decoding="async">
         </article>
-
         <article class="projects__card">
-          <img src="/assets/img/perfil.webp" width="500" height="500" alt="Primer plano de Nerón" class="projects__img" loading="lazy">
+          <img src="/assets/img/perfil.webp" width="500" height="500" alt="Primer plano de Nerón" class="projects__img" loading="lazy" decoding="async">
         </article>
-
         <article class="projects__card">
-          <img src="/assets/img/galeria2.webp" width="500" height="500" alt="Nerón jugando" class="projects__img" loading="lazy">
+          <img src="/assets/img/galeria2.webp" width="500" height="500" alt="Nerón jugando" class="projects__img" loading="lazy" decoding="async">
         </article>
-
         <article class="projects__card">
-          <img src="/assets/img/galeria3.webp" width="500" height="500" alt="Nerón al aire libre" class="projects__img" loading="lazy">
+          <img src="/assets/img/galeria3.webp" width="500" height="500" alt="Nerón al aire libre" class="projects__img" loading="lazy" decoding="async">
         </article>
-
       </div>
     </section>
   </main>
@@ -195,28 +190,20 @@
     <p>
       Este es un perfil de ejemplo.<br>
       Para adquirir el tuyo haz click aquí:
-      <a href="https://wa.me/5493471417071" class="alert-whatsapp" target="_blank" rel="noopener">
+      <a href="https://wa.me/5493471417071" class="alert-whatsapp" target="_blank" rel="noopener noreferrer">
         <strong>3471417071</strong>
       </a>.
     </p>
   </div>
 
-  <!-- SCROLLREVEAL con carga diferida -->
-  <script>
-    document.addEventListener("scroll", () => {
-      import("https://unpkg.com/scrollreveal").then(() => {
-        ScrollReveal().reveal(".projects__card", { distance: "20px", duration: 600, easing: "ease-out" });
-      });
-    }, { once: true });
-  </script>
-
-  <!-- JS principal -->
+  <!-- JS -->
   <script src="/assets/js/main.js" defer></script>
 
-  <!-- Lazy load del mapa -->
+  <!-- LAZY LOAD del mapa -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const mapa = document.getElementById("mapa");
+
       const observer = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
           mapa.innerHTML = `
@@ -224,11 +211,13 @@
               title="Ubicación de Nerón"
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26864.179135171686!2d-61.5239543!3d-32.6854501!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c9ef85e947f7df%3A0xca367a6a0135d3bc!2sLas%20Parejas%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1763665422133"
               width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
-            ></iframe>
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
           `;
           observer.disconnect();
         }
       });
+
       observer.observe(mapa);
     });
   </script>
