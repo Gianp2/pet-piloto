@@ -7,6 +7,9 @@
 
   <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 
+  <!-- Preload imagen principal (LCP) -->
+  <link rel="preload" as="image" href="assets/img/galeria1.webp">
+
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
@@ -19,21 +22,20 @@
 
 <body>
 
-  <!-- BOTONES FLOTANTES ABAJO A LA DERECHA -->
+  <!-- BOTONES FLOTANTES -->
   <div class="floating-buttons-right">
     <button class="theme-toggle" id="theme-button" aria-label="Cambiar entre modo claro y oscuro">
       <i class="ri-moon-line" aria-hidden="true"></i>
       <i class="ri-sun-line" aria-hidden="true"></i>
     </button>
 
-    <!-- BOTÓN DE INFORMACIÓN CON TEXTO -->
     <a href="pages/info.html" class="info-button info-button--text" aria-label="Ver información completa de Nerón">
       <i class="ri-information-line" aria-hidden="true"></i>
       <span>Más info.</span>
     </a>
   </div>
 
-  <!-- ENCABEZADO PERFIL -->
+  <!-- PERFIL -->
   <header class="profile container">
     <div class="profile__container">
 
@@ -41,12 +43,10 @@
         <div class="profile__border">
           <button class="profile__perfil" id="openImgModal" aria-label="Ampliar foto de perfil">
             <img
-              src="assets/img/galeria1.WebP"
+              src="assets/img/galeria1.webp"
               alt="Foto de Nerón, Husky Siberiano"
               width="260"
               height="260"
-              loading="lazy"
-              decoding="async"
               fetchpriority="high"
             >
             <div class="profile__zoom-icon">
@@ -117,9 +117,7 @@
       </div>
 
       <div class="contact-title-section">
-        <h2 class="contact-title">
-          Contactar al dueño
-        </h2>
+        <h2 class="contact-title">Contactar al dueño</h2>
         <p class="contact-subtitle">Respuesta inmediata • 24 hs</p>
       </div>
 
@@ -143,11 +141,13 @@
     </div>
   </header>
 
+  <!-- MODAL IMAGEN -->
   <div id="imgModal" class="img-modal" role="dialog" aria-modal="true" aria-label="Foto ampliada">
     <button class="img-modal-close" aria-label="Cerrar imagen ampliada">×</button>
     <img id="modalImage" class="img-modal-content" src="" alt="Foto ampliada" loading="lazy" decoding="async">
   </div>
 
+  <!-- GALERÍA -->
   <main class="main">
     <section class="filters container">
       <h2 style="text-align:center; margin: 3rem 0 1.5rem; font-size: 1.8rem;">
@@ -156,37 +156,35 @@
 
       <div class="projects__content grid filters__active" id="projects">
         <article class="projects__card">
-          <img src="assets/img/galeria1.WebP" width="500" height="500" alt="Nerón sentado" class="projects__img" loading="lazy" decoding="async">
+          <img src="assets/img/galeria1.webp" width="500" height="500" alt="Nerón sentado" class="projects__img" loading="lazy" decoding="async">
         </article>
         <article class="projects__card">
-          <img src="assets/img/perfil.WebP" width="500" height="500" alt="Primer plano de Nerón" class="projects__img" loading="lazy" decoding="async">
+          <img src="assets/img/perfil.webp" width="500" height="500" alt="Primer plano de Nerón" class="projects__img" loading="lazy" decoding="async">
         </article>
         <article class="projects__card">
-          <img src="assets/img/galeria2.WebP" width="500" height="500" alt="Nerón jugando" class="projects__img" loading="lazy" decoding="async">
+          <img src="assets/img/galeria2.webp" width="500" height="500" alt="Nerón jugando" class="projects__img" loading="lazy" decoding="async">
         </article>
         <article class="projects__card">
-          <img src="assets/img/galeria3.WebP" width="500" height="500" alt="Nerón al aire libre" class="projects__img" loading="lazy" decoding="async">
+          <img src="assets/img/galeria3.webp" width="500" height="500" alt="Nerón al aire libre" class="projects__img" loading="lazy" decoding="async">
         </article>
       </div>
     </section>
   </main>
+
   <br>
 
+  <!-- FOOTER -->
   <footer class="footer container">
     <h2>Ubicación</h2>
 
+    <!-- Map Placeholder (lazy load) -->
     <div id="mapa" style="inline-size:100%; max-inline-size:600px; block-size:300px; margin:1.5rem auto; border-radius:1rem; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.15);">
-      <iframe
-        title="Ubicación de Nerón"
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26864.179135171686!2d-61.5239543!3d-32.6854501!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c9ef85e947f7df%3A0xca367a6a0135d3bc!2sLas%20Parejas%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1763665422133"
-        width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
     </div>
 
     <span class="footer__copy">© 2025 Todos los derechos reservados</span>
   </footer>
 
+  <!-- ALERTA -->
   <div id="exampleAlert" class="alert-card glass">
     <span class="alert-close" id="alertClose">×</span>
     <p>
@@ -198,8 +196,31 @@
     </p>
   </div>
 
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="assets/js/main.js"></script>
+  <!-- SCROLLREVEAL y JS con defer -->
+  <script src="https://unpkg.com/scrollreveal" defer></script>
+  <script src="assets/js/main.js" defer></script>
+
+  <!-- LAZY LOAD del mapa -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const mapa = document.getElementById("mapa");
+
+      const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          mapa.innerHTML = `
+            <iframe
+              title="Ubicación de Nerón"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26864.179135171686!2d-61.5239543!3d-32.6854501!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c9ef85e947f7df%3A0xca367a6a0135d3bc!2sLas%20Parejas%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1763665422133"
+              width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          `;
+          observer.disconnect();
+        }
+      });
+
+      observer.observe(mapa);
+    });
+  </script>
 
 </body>
 </html>
