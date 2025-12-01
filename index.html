@@ -4,25 +4,19 @@
   <meta charset="UTF-8">
   <meta name="description" content="Perfil de Nerón, perro Husky Siberiano. Información de contacto, vacunas, alergias, galería y ubicación.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
   <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
-
-  <!-- PRELOAD DE LA IMAGEN LCP (la del perfil) -->
   <link rel="preload" as="image" href="/assets/img/galeria1.webp">
-
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
-
   <link rel="stylesheet" href="/assets/css/styles.css">
 
   <title>Nerón - Perfil Mascota</title>
 </head>
-
 <body>
 
-  <!-- BOTONES FLOTANTES -->
+  <!-- BTN FLOTANTES -->
   <div class="floating-buttons-right">
     <button class="theme-toggle" id="theme-button" aria-label="Cambiar entre modo claro y oscuro">
       <i class="ri-moon-line" aria-hidden="true"></i>
@@ -142,7 +136,7 @@
     </div>
   </header>
 
-  <!-- MODAL IMAGEN -->
+  <!-- MODAL IMG -->
   <div id="imgModal" class="img-modal" role="dialog" aria-modal="true" aria-label="Foto ampliada">
     <button class="img-modal-close" aria-label="Cerrar imagen ampliada">×</button>
     <img id="modalImage" class="img-modal-content" src="" alt="Foto ampliada" loading="lazy" decoding="async">
@@ -184,7 +178,7 @@
     <span class="footer__copy">© 2025 Todos los derechos reservados</span>
   </footer>
 
-  <!-- ALERTA -->
+  <!-- ALERT -->
   <div id="exampleAlert" class="alert-card glass">
     <span class="alert-close" id="alertClose">×</span>
     <p>
@@ -195,11 +189,10 @@
       </a>.
     </p>
   </div>
-
-  <!-- JS -->
+  
   <script src="/assets/js/main.js" defer></script>
 
-  <!-- LAZY LOAD del mapa -->
+  <!-- LAZY LOAD mapa -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const mapa = document.getElementById("mapa");
@@ -224,3 +217,4 @@
 
 </body>
 </html>
+
