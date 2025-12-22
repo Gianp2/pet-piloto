@@ -148,3 +148,29 @@ window.addEventListener("scroll", () => {
         headerSubtitle && (headerSubtitle.style.opacity = "1");
     }
 });
+
+/*=============== LAZY LOAD DEL MAPA (GOOGLE MAPS) ===============*/
+document.addEventListener("DOMContentLoaded", () => {
+    const mapa = document.getElementById("mapa");
+    if (!mapa) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            mapa.innerHTML = `
+                <iframe
+                  title="Ubicación de Nerón"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26864.179135171686!2d-61.5239543!3d-32.6854501!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c9ef85e947f7df%3A0xca367a6a0135d3bc!2sLas%20Parejas%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1763665422133"
+                  width="100%"
+                  height="100%"
+                  style="border:0;"
+                  allowfullscreen
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            `;
+            observer.disconnect();
+        }
+    });
+
+    observer.observe(mapa);
+});
